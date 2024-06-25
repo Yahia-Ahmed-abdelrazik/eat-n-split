@@ -1,15 +1,16 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const initialFriends = [
   {
     id: 118836,
-    name: "Clark",
+    name: "Yasser",
     image: "https://i.pravatar.cc/48?u=118836",
     balance: -7,
   },
   {
     id: 933372,
-    name: "Sarah",
+    name: "Mostafa",
     image: "https://i.pravatar.cc/48?u=933372",
     balance: 20,
   },
@@ -142,11 +143,12 @@ function FormAddFriend({ onAddFriend }) {
 
     if (!name || !friendImage) return;
 
-    const id = crypto.randomUUID();
+    // const id = crypto.randomUUID();
+    const id = uuidv4();
     const newFrind = {
       id,
       name,
-      image: friendImage,
+      image: `${friendImage}?=${id}`,
       balance: 0,
     };
 
